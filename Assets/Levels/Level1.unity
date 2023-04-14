@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 52459319}
   - component: {fileID: 52459318}
   - component: {fileID: 52459320}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -665,6 +665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1833674728}
   - component: {fileID: 1833674731}
+  - component: {fileID: 1833674733}
   - component: {fileID: 1833674727}
   - component: {fileID: 1833674730}
   - component: {fileID: 1833674729}
@@ -829,6 +830,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jump: 7.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!95 &1833674732
 Animator:
   serializedVersion: 5
@@ -850,3 +854,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1833674733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833674726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1236fde4399c5b84a9377627ee6f411f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCooldown: 1

@@ -6,16 +6,18 @@ public class playerMovement : MonoBehaviour
 {
     [SerializeField] private float speed; //[SerializeField] macht, dass man die Variable im Objekt ändern kann
     [SerializeField] private float jump;
+    [SerializeField] private LayerMask groundLayer;
     private Rigidbody2D body;
     private Animator anim;
-    private bool grounded;
+    private BoxCollider2D boxCollider;
+    private float horizontalInput;
 
     private void Awake() //Awake Funktion wird immer aufgerufen wenn das Player script aufgerufen wird
     {
         body = GetComponent<Rigidbody2D>(); //GetComponent durchsucht das Objekt auf dem das script ist nach Rigidbody2D component
         anim = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
-
     private void Update() //Update-Funktionen werden jeden Frame aufgerufen
     {
         // größer 0 = Player geht nach rechts und kleiner 0 = Player geht nach links
@@ -34,29 +36,31 @@ public class playerMovement : MonoBehaviour
             transform.localScale = new Vector3(-3, 3, 1);
         }
 
-        if (Input.GetKey(KeyCode.Space) && grounded)
+        if (Input.GetKey(KeyCode.Space) && isGrounded())
         {
             Jump();
         }
         //Rechts ist eine Abfrage die entweder True oder False ist und je nach dem wird die Variable "run" verändert
         //horizontalInput == 0 bedeutet man steht still
         anim.SetBool("run", horizontalInput != 0);
-        anim.SetBool("grounded", grounded);
+        anim.SetBool("grounded", isGrounded());
+        anim.SetBool("attack", false);
     }
 
     private void Jump()
     {
         body.velocity = new Vector2(body.velocity.x, jump);
         anim.SetTrigger("jump");
-        grounded = false;
     }
-
-    //OnCollisionEnter2D wird immer aufgerufen wenn 2 Objekte mit BoxColliders zusammenstoßen
-    private void OnCollisionEnter2D(Collision2D collision)
+    //raycast überprüft ob die Hitbox des Spielers Ground unter sich hat, wenn nicht return es null
+    //Die Funktion gibt also true zurück wenn Ground unter dem Spieler ist und False wenn das nicht der Fall ist
+    private bool isGrounded()
     {
-        if(collision.gameObject.tag == "Ground")
-        {
-            grounded = true;
-        }
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        return raycastHit.collider != null;
+    }
+    public bool canAttack()
+    {
+        return horizontalInput == 0 && isGrounded();
     }
 }
