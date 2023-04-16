@@ -29,7 +29,7 @@ public class playerAttack : MonoBehaviour
     private void Attack()
     {
         anim.SetTrigger("attack");
-        Debug.Log("<color=green>GESCHAFFT! </color>");
+        //Debug.Log("<color=green>GESCHAFFT! </color>");
         cooldownTimer = 0;
     }
 }
