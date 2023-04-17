@@ -103,7 +103,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 420f862823f72fd4aa8163f41d50adf5, type: 2}
+  m_Motion: {fileID: 7400000, guid: 065e9eeea6cb2784ca26df8f8a28cf3e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -115,7 +115,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player
+  m_Name: CyborgNoHands
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: run
@@ -199,7 +199,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f0dc6fc71ad240e4d8e6511f754fc808, type: 2}
+  m_Motion: {fileID: 7400000, guid: e9055cf4b393ef84d80faccab3d15822, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -226,7 +226,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 764dd545ca76b274a8dfcd3fdc5ba4f0, type: 2}
+  m_Motion: {fileID: 7400000, guid: da079bcbdca4c8b40a2b21ac2e66db53, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
