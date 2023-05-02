@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static EnemySpawner instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     public List<GameObject> prefabs;
 
     public List<Transform> spawnPoints;
