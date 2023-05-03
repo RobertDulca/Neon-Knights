@@ -18,7 +18,7 @@ TagManager:
   - Background
   - Player
   - Tower
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -53,6 +53,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3858713491
+    locked: 0
+  - name: Enemy
+    uniqueID: 1866705133
     locked: 0
   - name: Default
     uniqueID: 0
