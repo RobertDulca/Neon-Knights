@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: UI
+    uniqueID: 1682125011
+    locked: 0
   - name: Border
     uniqueID: 2344669691
     locked: 0
