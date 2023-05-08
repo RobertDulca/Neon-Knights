@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3289520223017575103}
   - component: {fileID: 5680678504829526777}
   m_Layer: 12
-  m_Name: Enemy3
+  m_Name: robocop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92b5b7f2e6f4e740950986efe934037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  attackPower: 0
-  moveSpeed: 3
+  health: 3
+  attackPower: 3
+  moveSpeed: 1.5
 --- !u!212 &9167123269755269356
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -1344,9 +1344,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 8553269227250439609, guid: 45ddff1a14bef7a4296cba62daca17b6, type: 3}
-  - {fileID: 952559949957134471, guid: 33deff0800c36a4409c5469ae0e15ae4, type: 3}
+  - {fileID: 7055280282518764737, guid: aef9719265414f54a890a6d0c80659ee, type: 3}
   - {fileID: 1735341820128141624, guid: 54b71aeb193e54083bbfe3a8a2620661, type: 3}
+  - {fileID: 6193485652983774470, guid: c40bb59a9a0b07745a912c5b49721748, type: 3}
   spawnPoints:
   - {fileID: 1102615243}
   - {fileID: 1021590436}
