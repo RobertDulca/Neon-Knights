@@ -58,12 +58,36 @@ public class MusicPlayer : MonoBehaviour
         }
     }
 
+    // called first
+    void OnEnable()
+    {
+        //Debug.Log("OnEnable called");
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    // called second
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.name == "MainMenu")
+        {
+            PlayMenuMusic();
+        }
+        //Debug.Log("OnSceneLoaded: " + scene.name);
+        //Debug.Log(mode);
+    }
+
     protected virtual void Start()
     {
         // If the game starts in a menu scene, play the appropriate music
         PlayMenuMusic();
     }
 
+    // called when the game is terminated
+    void OnDisable()
+    {
+        //Debug.Log("OnDisable");
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     /// <summary>
     /// Plays the music designed for the menus
     /// This method is static so that it can be called from anywhere in the code.
