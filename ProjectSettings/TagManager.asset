@@ -19,7 +19,7 @@ TagManager:
   - Ground
   - Background
   - Player
-  - Tower
+  - Wall
   - Enemy
   - 
   - 
@@ -53,8 +53,11 @@ TagManager:
   - name: Ground
     uniqueID: 1005578493
     locked: 0
-  - name: Tower
+  - name: Wall
     uniqueID: 1831277675
+    locked: 0
+  - name: Wall patch
+    uniqueID: 2517016765
     locked: 0
   - name: Player
     uniqueID: 3858713491
