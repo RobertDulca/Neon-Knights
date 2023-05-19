@@ -40,11 +40,18 @@ public class playerMovement : MonoBehaviour
         {
             Jump();
         }
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            anim.SetBool("pullgun", true);
+        }
+        else
+        {
+            anim.SetBool("pullgun", false);
+        }
         //Rechts ist eine Abfrage die entweder True oder False ist und je nach dem wird die Variable "run" verändert
         //horizontalInput == 0 bedeutet man steht still
         anim.SetBool("run", horizontalInput != 0);
         anim.SetBool("grounded", isGrounded());
-        anim.SetBool("attack", false);
     }
 
     private void Jump()
