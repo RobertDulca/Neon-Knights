@@ -7,7 +7,7 @@ public class BuildField : MonoBehaviour
     [Header("References")]
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Color hoverColor;
-
+    
     private GameObject wall;
     private Color startColor;
 
@@ -32,5 +32,6 @@ public class BuildField : MonoBehaviour
 
         GameObject wallToBuild = BuildManager.main.GetSelectedWall();
         wall  = Instantiate(wallToBuild, transform.position, Quaternion.identity);
+        sr.enabled ^= true;
     }
 }
