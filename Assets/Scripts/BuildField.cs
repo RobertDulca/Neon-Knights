@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuildField : MonoBehaviour
 {
-    [Header("References")]
+    /*[Header("References")]
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Color hoverColor;
     
@@ -33,5 +33,38 @@ public class BuildField : MonoBehaviour
         GameObject wallToBuild = BuildManager.main.GetSelectedWall();
         wall  = Instantiate(wallToBuild, transform.position, Quaternion.identity);
         sr.enabled ^= true;
+    }*/
+
+    [SerializeField] private SpriteRenderer sr;
+    public bool isInRange;
+    public KeyCode interactKey;
+
+    public GameObject constructedBuildingPrefab;
+
+    void Update()
+    {
+        if (isInRange)
+        {
+            if (Input.GetKeyDown(interactKey))
+            {
+                sr.enabled ^= true;
+                Instantiate(constructedBuildingPrefab, transform.position, transform.rotation);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Player in range");
+            isInRange = true;
+            /*if (Input.GetKeyDown(KeyCode.E))
+            {
+                //Destroy(gameObject); // Destroy the destroyed 
+                sr.enabled ^= true;
+                Instantiate(constructedBuildingPrefab, transform.position, transform.rotation);
+            }*/
+        }
     }
 }
