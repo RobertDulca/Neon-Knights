@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
         //StopAllCoroutines();
     }
-
+    
     IEnumerator SpawnDelay()
     {
         //Spawnfunktion Aufrufen
@@ -32,6 +32,7 @@ public class EnemySpawner : MonoBehaviour
         //Funktion nochmal aufrufen
         StartCoroutine(SpawnDelay());
     }
+    
 
     //Spawnmechanik
     void SpawnEnemy()
