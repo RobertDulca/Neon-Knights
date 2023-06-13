@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    //Leben, Angriffsstärke, Geschwindigkeit
+    //Leben, Angriffsstï¿½rke, Geschwindigkeit
     public int health, attackPower;
     public float moveSpeed;
+    public GameObject coinPrefab;
 
     void Update()
     {
@@ -24,19 +25,24 @@ public class Enemy : MonoBehaviour
         health--;
         //Hurt animation abspielen/Spritefarbe kurz auf rot setzen
         StartCoroutine(BlinkRed());
-        //Checken ob Leben = 0, wenn ja Objekt zerstören
+        //Checken ob Leben = 0, wenn ja Objekt zerstï¿½ren
         if (health <= 0)
         {
+            DropCoin();
             Destroy(gameObject);
         }
     }
     IEnumerator BlinkRed()
     {
-        //Die Farbe vom Sprite auf Rot ändern
+        //Die Farbe vom Sprite auf Rot ï¿½ndern
         GetComponent<SpriteRenderer>().color = Color.red;
         //Kurze Zeit warten
         yield return new WaitForSeconds(0.2f);
-        //Farbe auf Weiß zurück setzen --> Sprite wird normal
+        //Farbe auf Weiï¿½ zurï¿½ck setzen --> Sprite wird normal
         GetComponent<SpriteRenderer>().color = Color.white;
+    }
+    void DropCoin()
+    {
+        Instantiate(coinPrefab, transform.position, Quaternion.identity);
     }
 }
