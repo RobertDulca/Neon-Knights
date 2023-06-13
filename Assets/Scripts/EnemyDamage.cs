@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
-    public playerHealth playerHealth; // Reference to the playerHealth component
+    public playerHealth playerHealth;
     public int damage = 2;
 
     // Called when the enemy collides with the player

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class playerHealth : MonoBehaviour
+    public class playerHealth : MonoBehaviour
 {
     public int health;
     public int maxHealth = 10;
@@ -27,5 +27,16 @@ public class playerHealth : MonoBehaviour
     private void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        int enemyLayer = LayerMask.NameToLayer("Enemy"); // Set the layer name of the enemy layer
+
+        if (collision.gameObject.layer == enemyLayer)
+        {
+            // Damage the player
+            TakeDamage(2);
+        }
     }
 }
