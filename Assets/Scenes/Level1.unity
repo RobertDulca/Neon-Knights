@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ec2f6773d633ea449e93a38701ebf80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 1043934692}
+  playerHealth: {fileID: 0}
   damage: 2
 --- !u!70 &518396086
 CapsuleCollider2D:
@@ -3344,8 +3344,8 @@ GameObject:
   - component: {fileID: 1043934686}
   - component: {fileID: 1043934685}
   - component: {fileID: 1043934691}
-  - component: {fileID: 1043934692}
   - component: {fileID: 1043934693}
+  - component: {fileID: 1043934694}
   m_Layer: 10
   m_Name: Cybergirl
   m_TagString: Player
@@ -3544,20 +3544,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyscoreText: {fileID: 1072824200}
---- !u!114 &1043934692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1043934684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72bc7cf69a4aac542b88d45f15fbfbae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 10
 --- !u!114 &1043934693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3583,6 +3569,22 @@ MonoBehaviour:
   - {fileID: 504256467}
   - {fileID: 97778820}
   - {fileID: 1586364726}
+--- !u!114 &1043934694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043934684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565f7d02ca0f396488f189ae6f18d7ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 3
+  components:
+  - {fileID: 1043934693}
+  - {fileID: 1043934685}
 --- !u!1 &1064267115
 GameObject:
   m_ObjectHideFlags: 0
