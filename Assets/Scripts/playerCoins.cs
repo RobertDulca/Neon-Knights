@@ -16,14 +16,19 @@ public class ScoreScript : MonoBehaviour
     }
 
     // Update is called once per frame
-   private void OnTriggerEnter2D(Collider2D Coin)
+    private void OnTriggerEnter2D(Collider2D Coin)
     {
-        if(Coin.tag == "MyCoin")
+        if (Coin.tag == "MyCoin")
         {
             ScoreNumber++;
             Destroy(Coin.gameObject);//destroy when the player touches the coin
             MyscoreText.text = "Score: " + ScoreNumber;
         }
     }
-    
+
+    public int GetCoinCount()
+    {
+        return ScoreNumber;
+    }
+
 }
