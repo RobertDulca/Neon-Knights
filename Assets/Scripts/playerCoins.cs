@@ -25,5 +25,10 @@ public class ScoreScript : MonoBehaviour
             MyscoreText.text = "Score: " + ScoreNumber;
         }
     }
-    
+
+    public int GetCoinCount()
+    {
+        return ScoreNumber;
+    }
+
 }

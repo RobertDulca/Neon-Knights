@@ -1,3 +1,588 @@
+Li
+lww1206
+Do Not Disturb
+
+Li — 09/11/2022 12:41
+ALTER SESSION SET CURRENT_SCHEMA=FLUGHAFENBASE;
+
+select * from all_tables where lower(owner) = 'toprast';
+
+select * from person 
+WHERE nachname in ('Maier', 'Mayer');
+Expand
+Flughafen_UE.sql
+2 KB
+Li — 29/11/2022 20:41
+SELECT TEILE.TNR, BEZEICHNUNG
+FROM LIEFERPROGRAMME
+JOIN TEILE on LIEFERPROGRAMME.TNR=TEILE.TNR
+LEFT JOIN LIEFERANTEN on LIEFERANTEN.LIEF_NR=LIEFERPROGRAMME.LIEF_NR
+WHERE Ort = 'Gummersback';
+
+select Ang_Nr, Nachname, GEHALT
+from angestellte x 
+where gehalt > (select avg(GEHALT)
+                from angestellte y
+                where x.abt_nr = y.abt_nr);
+
+SELECT vorname || '_' || nachname FROM person;
+
+SELECT NAME FROM ABteilung
+WHERE abt_NR = 6;
+
+SELECT DISTINCT flugID from passagierliste
+
+SELECT Ang_NR, Nachname, Vorname 
+from Angestellte 
+where 12*gehalt between 40000 and 60000;
+
+SELECT a1.Vorname, a1.Nachname, a1.Gehalt, a1.Beruf
+FROM Angestellte a1, Angestellte a2
+WHERE a1.Gehalt = a2.Gehalt AND
+a1.Beruf=a2.Beruf AND
+a2.Nachname='Schmidt'AND
+a2.Vorname='Hugo';
+
+delete
+FROM PERSON
+WHERE nachanem = 'Mann';
+
+SELECT TNR, BEZEICHNUNG
+FROM ARTIKEL
+WHERE ARTIKEL_TYP = 'Mountainbike'
+AND (VERKAUFSPREIS < 1545
+OR JAHRESUMSATZ < 101);
+ 
+Li — 29/11/2022 23:36
+/*------------------------------------------------
+Übung 8.2.1
+Geben Sie das Gesamtgewicht aller Gepäcksstücke des Fluges mit der Flugnummer „OS1467" aus. (4 Punkte)
+------------------------------------------------*/
+select sum(gewicht) gesamtgewicht
+from flug fg join passagierliste pl on fg.flugid = pl.flugid
+Expand
+message.txt
+14 KB
+/*------------------------------------------------
+Aufgabe 8.2.1 (Toprast)
+Geben Sie das Dienstalter aller aktiven Mitarbeiter aus.
+Ordnen Sie die Ausgabe absteigend nach dem Dienstalter.
+------------------------------------------------*/
+select vorname, nachname, months_between(trunc(sysdate), eintrittsdatum)/12 Dienstalter
+Expand
+message.txt
+5 KB
+Li — 13/12/2022 10:27
+https://www.computerweekly.com/de/definition/Routing-Tabelle-Routing-Table#:~:text=Eine%20Routing%2DTabelle%20ist%20ein,kommt%2C%20verwenden%20Routing%2DTabellen.
+ComputerWeekly.de
+Was ist Routing-Tabelle (Routing Table)? - Definition von WhatIs.com
+Pakete, die durch das Netzwerk zu ihrem Ziel reisen, werden mit Routing-Tabellen (Routing Table) geleitet, auch Forwarding genannt. Der Weg kann über mehrere Hops führen.
+Was ist Routing-Tabelle (Routing Table)? - Definition von WhatIs.com
+https://www.computerweekly.com/de/definition/Time-to-live-TTL
+ComputerWeekly.de
+Was ist Time-to-live (TTL)? - Definition von WhatIs.com
+Der TTL-Wert (Time-to-live) ist ein Parameter bei der Datenübertragung in Netzwerken, der IP-Paketen mitgegeben wird und deren maximale Lebensdauer beschreibt.
+Was ist Time-to-live (TTL)? - Definition von WhatIs.com
+mac adress ändern um hardware zu verstecken
+Li — 14/12/2022 12:18
+/rechnungen/rechnung/filiale/name
+/rechnungen/rechnung/kunde/nachname
+/rechnungen/rechnung/kunde/nachname/text()
+//nachname/text()
+Li — 26/12/2022 13:08
+signup:
+OwO
+BOT
+ — 26/12/2022 13:08
+🎉 | Li leveled up!
+Image
+Li — 26/12/2022 13:08
+<?php
+// define variables and set to empty values
+$nameErr = $emailErr = $usernameErr = $pwErr = "";
+$name = $email = $username = $pw = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["name"])) {
+      $nameErr = "Name is required";
+    } else {
+      $name = test_input($_POST["name"]);
+    }
+    
+    if (empty($_POST["email"])) {
+      $emailErr = "Email is required";
+    } else {
+      $email = test_input($_POST["email"]);
+    }
+
+    if (empty($_POST["username"])) {
+        $usernameErr = "Username is required";
+      } else {
+        $username = test_input($_POST["username"]);
+      }
+
+    if (empty($_POST["pw"])) {
+        $pwErr = "Password is required";
+    } else {
+        $pw = test_input($_POST["pw"]);
+    }
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+
+<section id  = "Forms" class = "signup-form text-center">
+    <div id = "box" class = "center">
+    <h2> Sign Up </h2>
+    <p><span>* required fields</span></p>
+    <div id>
+    <form action = "index.php?page=signup"  method = "post"> 
+        <input type = "text" name ="name" placeholder="Fullname..."><br/>
+        <span>* <?php echo $nameErr;?></span>
+        <br>
+        <input type = "text" name ="email" placeholder="Email..."><br/>
+        <span class="error">* <?php echo $emailErr;?></span>
+        <br>
+        <input type = "text" name ="username" placeholder="Username..." ><br/>
+        <span class="error">* <?php echo $usernameErr;?></span>
+        <br>
+        <input type = "password" name ="pw" placeholder="Password..."><br/>
+        <span class="error">* <?php echo $pwErr;?></span>
+        <br>
+        <input type = "password" name ="pw" placeholder="Repeat password..."><br/>
+        <span class="error">* <?php echo $pwErr;?></span>
+        <br>
+        <button class="btn btn-secondary" type = "submit" name ="submit" value = "submit"> Sign up </button><br/>
+    </form>
+</div>
+</div>
+</section>
+Li — 18/03/2023 10:20
+#include <iostream>
+
+using namespace std;
+
+enum spell {criting = 1, boosting = 2, dodging = 3
+};
+
+class character {
+    protected:
+        int spell_1
+        int spell_2
+        int health
+        int attack
+        int rounds
+        int nextspell
+
+    public:
+        character(int s1, int s2, int h, int att, int r, int n):
+            spell_1(s1), spell_2(s2), health(h), attack(att), rounds(r), nextspell(n){}
+
+};
+
+class suzy: public character {
+public:
+    suzy(int s1, int s2, int h, int att, int r, int n):character(int s1, int s2, int h, int att, int r, int n){
+    s1 = 1;
+    s2 = 2;
+    h = 80;
+    att = 8;
+    r = 0;
+    n = 0;
+    }
+};
+
+class claude: public character {
+
+};
+
+class player: public character {
+
+};
+
+int main()
+{
+    cout << "Hello world!" << endl;
+    return 0;
+}
+Li — 31/05/2023 16:54
+Image
+Li — 01/06/2023 09:17
+Attachment file type: archive
+Pararell-Deepminer_3.zip
+873.42 KB
+Li — 01/06/2023 09:59
+https://gogoanimes.to/tengoku-daimakyou-episode-5
+Gogoanime
+Watch Tengoku Daimakyou Episode 5 English Subbedat Gogoanime
+Tengoku Daimakyou Episode 5
+Image
+Li — 03/06/2023 16:09
+Attachment file type: acrobat
+Rechnung.pdf
+55.01 KB
+Li — 04/06/2023 16:23
+Attachment file type: archive
+doc.zip
+74.30 KB
+Sure! The provided OpenAPI specification file describes the API endpoints for an Angular project. Let's break down the file and explain its contents in detail:
+
+1. `"openapi"`: Specifies the version of the OpenAPI Specification being used. In this case, it is version 3.0.0.
+
+2. `"info"`: Provides information about the API, such as its title and version.
+
+3. `"paths"`: Defines the API endpoints and their corresponding HTTP methods.
+
+   a. `"/signup"`: Represents the `/signup` endpoint for user signup.
+
+      - `"post"`: Specifies that this endpoint supports the HTTP POST method.
+
+      - `"summary"`: Provides a brief description of the endpoint.
+
+      - `"requestBody"`: Defines the request body for the POST request.
+
+        - `"required"`: Indicates that the request body is required.
+
+        - `"content"`: Specifies the content type of the request body.
+
+          - `"application/json"`: Defines the request body as JSON data.
+
+            - `"schema"`: Describes the structure of the JSON object in the request body.
+
+              - `"type"`: Specifies that the object is of type "object".
+
+              - `"properties"`: Lists the properties of the JSON object.
+
+                - `"email"`: Represents the user's email address.
+
+                - `"password"`: Represents the user's password.
+
+                - `"confirmPassword"`: Represents the confirmation of the user's password.
+
+                - `"company"`: Represents the company name. It is marked as "readOnly" since it should not be modified during signup.
+
+                - `"street"`: Represents the user's street address.
+
+                - `"city"`: Represents the user's city.
+
+                - `"zipCode"`: Represents the user's zip code. It should match the specified pattern of only containing digits.
+
+              - `"required"`: Lists the required properties of the JSON object.
+
+      - `"responses"`: Describes the possible responses for the `/signup` endpoint.
+
+        - `"200"`: Represents a successful response with the status code 200.
+
+        - `"400"`: Represents a response with the status code 400, indicating an invalid request.
+
+   b. `"/login"`: Represents the `/login` endpoint for user login.
+
+      - `"post"`: Specifies that this endpoint supports the HTTP POST method.
+
+      - `"summary"`: Provides a brief description of the endpoint.
+
+      - `"requestBody"`: Defines the request body for the POST request, similar to the `/signup` endpoint.
+
+      - `"responses"`: Describes the possible responses for the `/login` endpoint.
+
+        - `"200"`: Represents a successful response with the status code 200.
+
+        - `"401"`: Represents a response with the status code 401, indicating unauthorized access.
+
+In summary, the provided OpenAPI specification defines two endpoints: `/signup` for user signup and `/login` for user login. It specifies the request body structure, response codes, and additional details for each endpoint, allowing developers to understand and interact with the API more effectively.
+Li — 04/06/2023 18:47
+Apologies for the confusion in my previous response. Let me clarify the correct HTTP methods for the signup and login endpoints.
+
+1. Signup Endpoint:
+   - HTTP Method: POST
+   - URL: `/signup`
+   - Summary: This endpoint is used for user signup.
+   - Request Body: The request body is required and should be in JSON format. It includes the following properties:
+     - `email`: User's email address (string, required, email format)
+     - `password`: User's password (string, required, minimum length of 8 characters)
+     - `confirmPassword`: Confirmation of the user's password (string, required)
+     - `company`: Company name (string, read-only)
+     - `street`: User's street address (string, required)
+     - `city`: User's city (string, required)
+     - `zipCode`: User's zip code (string, required, must match the pattern "^[0-9]+$")
+   - Response:
+     - 200: Successful signup
+     - 400: Invalid request
+
+2. Login Endpoint:
+   - HTTP Method: POST
+   - URL: `/login`
+   - Summary: This endpoint is used for user login.
+   - Request Body: The request body is required and should be in JSON format. It includes the following properties:
+     - `email`: User's email address (string, required, email format)
+     - `password`: User's password (string, required, minimum length of 8 characters)
+   - Response:
+     - 200: Successful login
+     - 401: Unauthorized
+
+Both endpoints use the POST method because they involve creating or modifying resources on the server. The signup endpoint is used to create a new user account, while the login endpoint is used to verify the user's credentials and initiate a session.
+Li — 04/06/2023 19:21
+https://www.cleo.com/blog/blog-knowledge-base-what-is-rest-api#:~:text=How%20Does%20REST%20API%20work,the%20loading%20of%20a%20webpage.
+Cleo
+Blog: Understanding How to Utilize a REST API | Cleo
+REST (Representational State Transfer) APIs, sometimes also referred to as RESTful APIs, are an increasingly popular design style. REST APIs are built to take advantage of pre-existing protocols within an environment, most commonly over HTTP for a Web API. The REST API design is more lightweight and is known for its vast flexibility in enabling ...
+Li — 04/06/2023 20:07
+https://blog.hubspot.com/website/what-is-rest-api
+REST APIs: How They Work and What You Need to Know
+Learn the fundamentals of REST APIs and why they're one of the most widely-used technologies on the web.
+REST APIs: How They Work and What You Need to Know
+Li — 05/06/2023 09:32
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Angular Project API",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/signup": {
+        "post": {
+          "summary": "User Signup",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "description": "User's email address"
+                    },
+                    "password": {
+                      "type": "string",
+                      "minLength": 8,
+                      "description": "User's password"
+                    },
+                    "confirmPassword": {
+                      "type": "string",
+                      "description": "Confirmation of user's password"
+                    },
+                    "company": {
+                      "type": "string",
+                      "description": "Company name",
+                      "readOnly": true
+                    },
+                    "street": {
+                      "type": "string",
+                      "description": "User's street address"
+                    },
+                    "city": {
+                      "type": "string",
+                      "description": "User's city"
+                    },
+                    "zipCode": {
+                      "type": "string",
+                      "pattern": "^[0-9]+$",
+                      "description": "User's zip code"
+                    }
+                  },
+                  "required": ["email", "password", "confirmPassword", "street", "city", "zipCode"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful signup"
+            },
+            "400": {
+              "description": "Invalid request"
+            }
+          }
+        }
+      },
+      "/login": {
+        "get": {
+          "summary": "User Login",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "description": "User's email address"
+                    },
+                    "password": {
+                      "type": "string",
+                      "minLength": 8,
+                      "description": "User's password"
+                    }
+                  },
+                  "required": ["email", "password"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful login"
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          }
+        }
+      }
+    }
+  }
+Li — 05/06/2023 12:26
+cd backend
+node server.js
+Li — 05/06/2023 14:44
+schutzziele
+CIA
+certificates
+public key
+signieren
+Austellende Behörde
+hash funktionen
+symmetrische und asymmetrische verschlüsselung(symmetrische ist schneller)
+  bei asymmetrischer verschüsselung muss man zuerst die schlüsseln austauschen 
+  man in middle 
+  probleme bei symmetrischer verschlüsselung (Diffie-Hellman wird zb bei TLS         eingesetzt)
+PKI(zentral) & Web of Trust(dezentral) - was ist unterschied?
+kann man eine PKI selber machen? - ja, z.b größere Unternehmen oder Stadt Wien
+DAC/MAC/RBAC
+ 
+Li — 05/06/2023 15:51
+keine firewall ect
+quanten kommt nicht
+Li — 06/06/2023 13:51
+Image
+Image
+Li — 12/06/2023 08:49
+https://data-flair.training/blogs/avl-tree/
+DataFlair
+AVL Tree in Data Structure - DataFlair
+Learn what is AVL tree in Data Structure. See AVL rotations, operations, Working, implementation, applications & complexity of AVL tree.
+AVL Tree in Data Structure - DataFlair
+Li — 14/06/2023 10:17
+Image
+Li — 15/06/2023 21:54
+Image
+Li — 17/06/2023 19:56
+38,040
+Li — 19/06/2023 18:27
+import { Component } from '@angular/core';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+
+@Component({
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
+})
+export class SignUpComponent {
+  signUpForm: FormGroup;
+  hide: boolean = true;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.signUpForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', Validators.required],
+      company: [{ value: 'FH Technikum Wien', disabled: true }],
+      street: ['', Validators.required],
+      city: ['', Validators.required],
+      zipCode: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
+    }, {
+      validator: this.confirmedValidator('password', 'confirmPassword')
+    });
+  }
+
+  onSubmit() {
+    if (this.signUpForm.invalid) {
+      return;
+    }
+  }
+
+  confirmedValidator(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ confirmedValidator: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
+}
+```
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="E-Mail" formControlName="email">
+      <mat-error *ngIf="signUpForm.get('email')?.errors?.['required']">E-Mail-Adresse ist erforderlich.</mat-error>
+      <mat-error *ngIf="signUpForm.get('email')?.errors?.['email']">Ungültige E-Mail-Adresse.</mat-error>
+Expand
+message.txt
+3 KB
+Li — 20/06/2023 13:14
+<a mat-raised-button color="primary" type="button" routerLink="/highscore">Highscore</a>
+Li — 20/06/2023 17:18
+const express = require("express"); //import express js module
+const cors = require("cors"); //import cross origin resource sharing module
+const app = express(); //creates an instance of the Express application
+
+app.use(cors()); //applies the CORS middleware to the application, enabling cross-origin requests
+app.use(express.json()); //adds the built-in Express middleware for parsing JSON data in request bodies
+Expand
+message.txt
+4 KB
+Li — 20/06/2023 17:52
+const express = require("express");
+const cors = require("cors");
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+Expand
+message.txt
+3 KB
+Li — Yesterday at 15:51
+json schema
+Li — Today at 10:25
+https://www.ableitungsrechner.net/
+Ableitungsrechner • Mit Rechenweg!
+Benutze diesen kostenlosen Online-Rechner, um Ableitungen von mathematischen Funktionen zu bestimmen. Der vollständige Rechenweg wird angezeigt.
+Li — Today at 18:53
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2... (122 KB left)
+Expand
+message.txt
+172 KB
+Li — Today at 19:03
+mine
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+... (128 KB left)
+Expand
+message.txt
+178 KB
+﻿
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!29 &1
@@ -577,6 +1162,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8, y: 0.541564}
   m_EdgeRadius: 0
+--- !u!1 &169639576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 169639577}
+  - component: {fileID: 169639579}
+  - component: {fileID: 169639578}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &169639577
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169639576}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 742286044}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -618, y: 294}
+  m_SizeDelta: {x: 2000, y: 500}
+  m_Pivot: {x: 0.5000006, y: 0.5000001}
+--- !u!114 &169639578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169639576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 300
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &169639579
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169639576}
+  m_CullTransparentMesh: 0
 --- !u!1 &186636424
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,28 +2038,14 @@ GameObject:
   - component: {fileID: 518396088}
   - component: {fileID: 518396087}
   - component: {fileID: 518396086}
-  - component: {fileID: 518396085}
+  - component: {fileID: 518396089}
   m_Layer: 0
-  m_Name: DmgTest
+  m_Name: Coretest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &518396085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518396084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec2f6773d633ea449e93a38701ebf80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
-  damage: 2
 --- !u!70 &518396086
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1497,6 +2148,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &518396089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518396084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72bc7cf69a4aac542b88d45f15fbfbae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
+  timerUI: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,6 +2408,10 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of e19605c (Merge pull request #2 from RobertDulca/test)
 =======
 >>>>>>> parent of e19605c (Merge pull request #2 from RobertDulca/test)
 =======
@@ -6188,6 +6858,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   m_CorrespondingSourceObject:... (128 KB left)
 >>>>>>> parent of b602af8 (Update Level1.unity)
@@ -6195,3 +6866,10 @@ SpriteRenderer:
 >>>>>>> parent of e19605c (Merge pull request #2 from RobertDulca/test)
 =======
 >>>>>>> parent of e19605c (Merge pull request #2 from RobertDulca/test)
+=======
+>>>>>>> parent of e19605c (Merge pull request #2 from RobertDulca/test)
+=======
+  m_CorrespondingSourceObject:... (128 KB left)
+message.txt
+178 KB
+>>>>>>> parent of 6113202 (Revert "Merge pull request #2 from RobertDulca/test")
