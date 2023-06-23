@@ -1741,6 +1741,9 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of e19605c (Merge pull request #2 from RobertDulca/test)
 =======
 >>>>>>> parent of e19605c (Merge pull request #2 from RobertDulca/test)
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6184,8 +6187,11 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   m_CorrespondingSourceObject:... (128 KB left)
 >>>>>>> parent of b602af8 (Update Level1.unity)
+=======
+>>>>>>> parent of e19605c (Merge pull request #2 from RobertDulca/test)
 =======
 >>>>>>> parent of e19605c (Merge pull request #2 from RobertDulca/test)
