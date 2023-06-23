@@ -4,52 +4,34 @@ using UnityEngine;
 
 public class BuildField : MonoBehaviour
 {
-    /*[Header("References")]
-    [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private Color hoverColor;
-    
-    private GameObject wall;
-    private Color startColor;
-
-    private void Start()
-    {
-        startColor = sr.color;
-    }
-
-    private void OnMouseEnter()
-    {
-        sr.color = hoverColor;
-    }
-
-    private void OnMouseExit()
-    {
-        sr.color = startColor;
-    }
-
-    private void OnMouseDown()
-    {
-        if (wall != null) return;
-
-        GameObject wallToBuild = BuildManager.main.GetSelectedWall();
-        wall  = Instantiate(wallToBuild, transform.position, Quaternion.identity);
-        sr.enabled ^= true;
-    }*/
-
-    [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private SpriteRenderer bf;
     public bool isInRange;
     public KeyCode interactKey;
+    private bool wallMade;
 
     public GameObject constructedBuildingPrefab;
+    private buildingHealth healthWall;
 
+    private void Start() {
+        healthWall = constructedBuildingPrefab.GetComponent<buildingHealth>();
+        wallMade = false;
+    }
     void Update()
     {
-        if (isInRange)
+        healthWall = constructedBuildingPrefab.GetComponent<buildingHealth>();
+        if (isInRange && !wallMade)
         {
             if (Input.GetKeyDown(interactKey))
             {
-                sr.enabled ^= true;
+                bf.enabled ^= true;
+                wallMade = true;
                 Instantiate(constructedBuildingPrefab, transform.position, transform.rotation);
             }
+        }
+
+        if(!healthWall.healthState && wallMade){
+            constructedBuildingPrefab.SetActive(false);
+            bf.enabled = true;
         }
     }
 
@@ -59,12 +41,6 @@ public class BuildField : MonoBehaviour
         {
             Debug.Log("Player in range");
             isInRange = true;
-            /*if (Input.GetKeyDown(KeyCode.E))
-            {
-                //Destroy(gameObject); // Destroy the destroyed 
-                sr.enabled ^= true;
-                Instantiate(constructedBuildingPrefab, transform.position, transform.rotation);
-            }*/
         }
     }
 }
