@@ -1739,6 +1739,7 @@ BoxCollider2D:
 --- !u!114 &578013057
 MonoBehaviour:
   m_ObjectHideFlags: 0
+<<<<<<< HEAD
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -6179,3 +6180,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+=======
+  m_CorrespondingSourceObject:... (128 KB left)
+>>>>>>> parent of b602af8 (Update Level1.unity)
