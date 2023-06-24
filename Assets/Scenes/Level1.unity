@@ -1461,6 +1461,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< test
+=======
+--- !u!114 &518396085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518396084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ec2f6773d633ea449e93a38701ebf80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 0}
+  damage: 2
+>>>>>>> main
 --- !u!70 &518396086
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3723,6 +3740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyscoreText: {fileID: 1072824200}
+<<<<<<< test
   MyscoreText2: {fileID: 797065584}
 --- !u!114 &1043934692
 MonoBehaviour:
@@ -3739,6 +3757,8 @@ MonoBehaviour:
   health: 0
   maxHealth: 10
   timerUI: {fileID: 0}
+=======
+>>>>>>> main
 --- !u!114 &1043934693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3773,10 +3793,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1043934684}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< test
   m_Script: {fileID: 11500000, guid: ae60442928f81c24dac1578689b3e767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   counterText: {fileID: 0}
+=======
+  m_Script: {fileID: 11500000, guid: 565f7d02ca0f396488f189ae6f18d7ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 3
+  components:
+  - {fileID: 1043934693}
+  - {fileID: 1043934685}
+>>>>>>> main
 --- !u!1 &1064267115
 GameObject:
   m_ObjectHideFlags: 0
