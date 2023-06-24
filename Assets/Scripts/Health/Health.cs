@@ -9,9 +9,6 @@ public class Health : MonoBehaviour
     private Animator anim;
     private bool dead;
 
-    [Header("Components")]
-    [SerializeField] private Behaviour[] components;
-
     private void Awake()
     {
         currentHealth = startingHealth;
@@ -31,7 +28,7 @@ public class Health : MonoBehaviour
             {
                 anim.SetTrigger("die");
 
-                /*if(GetComponent<playerMovement>() != null) 
+                if(GetComponent<playerMovement>() != null) 
                 { 
                     GetComponent<playerMovement>().enabled= false;
                 }
@@ -39,19 +36,10 @@ public class Health : MonoBehaviour
                 if(GetComponent<MeleeEnemy>() != null) 
                 { 
                     GetComponent<MeleeEnemy>().enabled= false;
-                }*/
-
-                foreach(Behaviour component in components)
-                {
-                    component.enabled = false;
                 }
 
                 dead = true;
             }
         }
-    }
-    private void Deactivate()
-    {
-        gameObject.SetActive(false);
     }
 }
