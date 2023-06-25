@@ -40,15 +40,23 @@ public class BuildField : MonoBehaviour
     public KeyCode interactKey;
 
     public GameObject constructedBuildingPrefab;
+    private ScoreScript scoreScript;
 
+    [SerializeField] private int cost=1;
+    private void Start()
+    {
+        scoreScript = FindObjectOfType<ScoreScript>();
+    }
     void Update()
     {
         if (isInRange)
         {
-            if (Input.GetKeyDown(interactKey))
+            if (Input.GetKeyDown(interactKey) && scoreScript.GetCoinCount()>=cost)//check if its is greater than one
             {
+                
                 sr.enabled ^= true;
                 Instantiate(constructedBuildingPrefab, transform.position, transform.rotation);
+                scoreScript.SetCoinCount(scoreScript.GetCoinCount()-cost);
             }
         }
     }

@@ -7,10 +7,11 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] Slider VolumeSlider;
 
-    GameObject OptionMenu = GameObject.Find("OptionMenu");
+    
     // Start is called before the first frame update
     void Start()
     {
+        GameObject OptionMenu = GameObject.Find("OptionMenu");
         if (!PlayerPrefs.HasKey("musicVolume"))
         {
             PlayerPrefs.SetFloat("musicVolume", 0.2f);
