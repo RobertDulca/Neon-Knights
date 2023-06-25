@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed; //[SerializeField] macht, dass man die Variable im Objekt ändern kann
+    [SerializeField] private float speed; //[SerializeField] macht, dass man die Variable im Objekt ï¿½ndern kann
     [SerializeField] private float jump;
     [SerializeField] private LayerMask groundLayer;
     private Rigidbody2D body;
@@ -20,7 +20,7 @@ public class playerMovement : MonoBehaviour
     }
     private void Update() //Update-Funktionen werden jeden Frame aufgerufen
     {
-        // größer 0 = Player geht nach rechts und kleiner 0 = Player geht nach links
+        // grï¿½ï¿½er 0 = Player geht nach rechts und kleiner 0 = Player geht nach links
         float horizontalInput = Input.GetAxis("Horizontal");
 
         //Input.GetAxis("Horizontal") nimmt 'a' and 'd' als Input und bewegt den Player in die entsprechende Richtung
@@ -48,7 +48,7 @@ public class playerMovement : MonoBehaviour
         {
             anim.SetBool("pullgun", false);
         }
-        //Rechts ist eine Abfrage die entweder True oder False ist und je nach dem wird die Variable "run" verändert
+        //Rechts ist eine Abfrage die entweder True oder False ist und je nach dem wird die Variable "run" verï¿½ndert
         //horizontalInput == 0 bedeutet man steht still
         anim.SetBool("run", horizontalInput != 0);
         anim.SetBool("grounded", isGrounded());
@@ -59,8 +59,8 @@ public class playerMovement : MonoBehaviour
         body.velocity = new Vector2(body.velocity.x, jump);
         anim.SetTrigger("jump");
     }
-    //raycast überprüft ob die Hitbox des Spielers Ground unter sich hat, wenn nicht return es null
-    //Die Funktion gibt also true zurück wenn Ground unter dem Spieler ist und False wenn das nicht der Fall ist
+    //raycast ï¿½berprï¿½ft ob die Hitbox des Spielers Ground unter sich hat, wenn nicht return es null
+    //Die Funktion gibt also true zurï¿½ck wenn Ground unter dem Spieler ist und False wenn das nicht der Fall ist
     private bool isGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
