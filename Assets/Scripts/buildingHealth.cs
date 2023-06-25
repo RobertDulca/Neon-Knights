@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
     public int health;
     public int maxHealth = 10;
     public bool healthState;
-    [SerializeField] public SpriteRenderer wallDamage;
+    public SpriteRenderer wallDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ using UnityEngine.SceneManagement;
         health -= amount;
         if (health <= 0)
         {
-            healthState = false;
+            Destroy(gameObject);
         }
     }
 

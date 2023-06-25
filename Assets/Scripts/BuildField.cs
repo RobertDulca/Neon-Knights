@@ -8,30 +8,27 @@ public class BuildField : MonoBehaviour
     public bool isInRange;
     public KeyCode interactKey;
     private bool wallMade;
-
     public GameObject constructedBuildingPrefab;
-    private buildingHealth healthWall;
+    private GameObject newWall;
 
     private void Start() {
-        healthWall = constructedBuildingPrefab.GetComponent<buildingHealth>();
         wallMade = false;
     }
     void Update()
     {
-        healthWall = constructedBuildingPrefab.GetComponent<buildingHealth>();
         if (isInRange && !wallMade)
         {
             if (Input.GetKeyDown(interactKey))
             {
                 bf.enabled ^= true;
                 wallMade = true;
-                Instantiate(constructedBuildingPrefab, transform.position, transform.rotation);
+                newWall = Instantiate(constructedBuildingPrefab, transform.position, transform.rotation);
             }
         }
 
-        if(!healthWall.healthState && wallMade){
-            constructedBuildingPrefab.SetActive(false);
+        if(newWall != null && newWall.GetComponent<buildingHealth>() != null && newWall.GetComponent<buildingHealth>().health <= 0 && wallMade){
             bf.enabled = true;
+            wallMade = false;
         }
     }
 

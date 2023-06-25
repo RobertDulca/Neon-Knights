@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 10
+  maxHealth: 4
   healthState: 0
   wallDamage: {fileID: 4925354088474538339}
 --- !u!1 &8161927326582502924
