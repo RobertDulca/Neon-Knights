@@ -35,17 +35,19 @@ public class BuildField : MonoBehaviour
         sr.enabled ^= true;
     }*/
 
-    [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private SpriteRenderer bf;
     public bool isInRange;
     public KeyCode interactKey;
-
+    private bool wallMade;
     public GameObject constructedBuildingPrefab;
     private ScoreScript scoreScript;
+    private GameObject newWall;
 
     [SerializeField] private int cost=1;
     private void Start()
     {
         scoreScript = FindObjectOfType<ScoreScript>();
+        wallMade = false;
     }
     void Update()
     {
@@ -54,10 +56,15 @@ public class BuildField : MonoBehaviour
             if (Input.GetKeyDown(interactKey) && scoreScript.GetCoinCount()>=cost)//check if its is greater than one
             {
                 
-                sr.enabled ^= true;
-                Instantiate(constructedBuildingPrefab, transform.position, transform.rotation);
+                bf.enabled ^= true;
+                wallMade = true;
+                newWall = Instantiate(constructedBuildingPrefab, transform.position, transform.rotation);
                 scoreScript.SetCoinCount(scoreScript.GetCoinCount()-cost);
             }
+        }
+        if(newWall != null && newWall.GetComponent<buildingHealth>() != null && newWall.GetComponent<buildingHealth>().health <= 0 && wallMade){
+            bf.enabled = true;
+            wallMade = false;
         }
     }
 
