@@ -24,7 +24,7 @@ TagManager:
   - Enemy
   - BuildField
   - Turret
-  - 
+  - Playerbullet
   - 
   - 
   - 
@@ -71,4 +71,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Playerbullet
+    uniqueID: 2820546423
     locked: 0

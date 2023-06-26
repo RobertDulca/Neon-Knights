@@ -6,6 +6,9 @@ public class TimerUI : MonoBehaviour
     [SerializeField]
     private Text counterText;
 
+    [SerializeField]
+    private Text counterText2;
+
     private float initialTime;
 
     void Start()
@@ -33,6 +36,7 @@ public class TimerUI : MonoBehaviour
         int seconds = (int)(elapsedTime % 60f);
 
         counterText.text = "Time: " + minutes.ToString("00") + ":" + seconds.ToString("00");
+        counterText2.text=counterText.text;
     }
 
     public void ResetTimer()
