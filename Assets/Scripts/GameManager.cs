@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
     IEnumerator WaveStartDelay()
     {
         //Paar Skunden warten bevor Spawning beginnt
-        yield return new WaitForSeconds(5f);
+        //yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
         //Gegnerspawning aufrufen
         GetComponent<EnemySpawner>().StartSpawning();
     }

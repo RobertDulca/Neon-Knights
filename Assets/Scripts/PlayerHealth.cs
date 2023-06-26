@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class playerHealth : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class playerHealth : MonoBehaviour
     public TimerUI timerUI;
     private float startTime;
     private ScoreScript scoreScript;
+
+    public GameObject gameOverPanel;
+    public Text survivalTimeText;
+    public Text coinCountText;
+
+    string end;
 
     // Start is called before the first frame update
     void Start()
@@ -29,21 +36,25 @@ public class playerHealth : MonoBehaviour
         }
         else
         {
+            
             //Debug.LogWarning("TimerUI reference is null");
         }
     }
 
     public void TakeDamage(int amount)
     {
+        if (health <= 0)
+        { return; } //falls bereits zuvor aktiviert
         health -= amount;
         if (health <= 0)
         {
             Debug.Log("You died");
             float survivalTime = Time.time - startTime;
             int coinCount = scoreScript.GetCoinCount();
-            Debug.Log("Survived for: " + survivalTime.ToString("F2") + " seconds");
+            end=survivalTime.ToString("F2");
+            Debug.Log("Survived for: " + end + " seconds");
             Debug.Log("Coins collected: " + coinCount);
-            RestartScene(); 
+            ShowGameOverPanel(survivalTime, coinCount);
         }
     }
 
@@ -63,6 +74,29 @@ public class playerHealth : MonoBehaviour
     private void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void ShowGameOverPanel(float survivalTime, int coinCount)
+    {
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true);
+            survivalTimeText.text = "Survived for: " + survivalTime.ToString("F2") + " seconds";
+            coinCountText.text = "Coins collected: " + coinCount;
+        }
+    }
+
+    public void GoToMainMenu()
+    {
+        startTime = Time.time;
+        SceneManager.LoadScene("MainMenu"); 
+    }
+
+    public void PlayAgain()
+    {
+        ResetTimer();
+        startTime = Time.time;
+        SceneManager.LoadScene("Level1");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

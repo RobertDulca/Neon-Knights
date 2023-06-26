@@ -19,6 +19,7 @@ public class TimerUI : MonoBehaviour
         }
         else
         {
+            ResetTimer();
             counterText.text = "00:00";
         }
     }
