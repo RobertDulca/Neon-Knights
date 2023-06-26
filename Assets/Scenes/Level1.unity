@@ -2331,7 +2331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 2
+  maxHealth: 50
   timerUI: {fileID: 0}
   gameOverPanel: {fileID: 261636557}
   survivalTimeText: {fileID: 1863920308}
