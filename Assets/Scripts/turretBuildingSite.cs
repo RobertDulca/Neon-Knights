@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildField : MonoBehaviour
+public class turettBuildingSite : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer bf;
     public bool isInRange;
@@ -12,7 +12,7 @@ public class BuildField : MonoBehaviour
     private ScoreScript scoreScript;
     private GameObject newWall;
 
-    [SerializeField] private int cost = 1;
+    [SerializeField] private int cost = 2;
 
     private void Start()
     {
@@ -28,13 +28,10 @@ public class BuildField : MonoBehaviour
             {
                 bf.enabled ^= true;
                 wallMade = true;
-                newWall = Instantiate(constructedBuildingPrefab, transform.position, transform.rotation, transform); // Set the parent as the BuildField object
+                Vector3 newPosition = new Vector3(transform.position.x, 0.0f, transform.position.z);
+                newWall = Instantiate(constructedBuildingPrefab, newPosition, transform.rotation, transform); // Set the parent as the BuildField object
                 scoreScript.SetCoinCount(scoreScript.GetCoinCount() - cost);
             }
-        }
-        else if (!isInRange && wallMade && newWall != null && newWall.GetComponent<buildingHealth>() != null && newWall.GetComponent<buildingHealth>().health <= 0)
-        {
-            WallDestroyed();
         }
     }
 
@@ -54,12 +51,5 @@ public class BuildField : MonoBehaviour
             Debug.Log("Player out of range");
             isInRange = false;
         }
-    }
-
-    public void WallDestroyed()
-    {
-        wallMade = false;
-        bf.enabled = true;
-        newWall = null; // Reset the reference to allow building a new wall
     }
 }

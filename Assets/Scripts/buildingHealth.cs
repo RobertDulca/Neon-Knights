@@ -8,13 +8,15 @@ public class buildingHealth : MonoBehaviour
     public int maxHealth = 10;
     public bool healthState;
     public SpriteRenderer wallDamage;
+    private BuildField buildField;
 
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
-        wallDamage.enabled ^= true;
+        wallDamage.enabled = false;
         healthState = true;
+        buildField = GetComponentInParent<BuildField>();
     }
 
     public void TakeDamage(int amount)
@@ -22,7 +24,14 @@ public class buildingHealth : MonoBehaviour
         health -= amount;
         if (health <= 0)
         {
+            // Wall is destroyed
             Destroy(gameObject);
+
+            // Notify BuildField that the wall is destroyed
+            if (buildField != null)
+            {
+                buildField.WallDestroyed();
+            }
         }
     }
 
@@ -32,14 +41,16 @@ public class buildingHealth : MonoBehaviour
 
         if (collision.gameObject.layer == enemyLayer)
         {
-            // Damage the player
+            // Damage the wall
             TakeDamage(2);
         }
     }
 
-    void Update(){
-        if(health < maxHealth*0.8){
-            wallDamage.enabled = true;        
+    void Update()
+    {
+        if (health < maxHealth * 0.8)
+        {
+            wallDamage.enabled = true;
         }
     }
 }
