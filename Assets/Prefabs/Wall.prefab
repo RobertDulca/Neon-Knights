@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1777950531
-  m_SortingLayer: -3
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 154444368098b5240aa8015ddf593b19, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 4920287485754954947}
   - component: {fileID: 6445457589717439549}
   - component: {fileID: 7959117630008297294}
+  - component: {fileID: 4301624102092026412}
   m_Layer: 11
   m_Name: Wall
   m_TagString: Untagged
@@ -116,7 +117,7 @@ Transform:
   m_Children:
   - {fileID: 8230889248891926876}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6445457589717439549
 SpriteRenderer:
@@ -157,7 +158,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1831277675
-  m_SortingLayer: -4
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8da166b02cdf6d945834b2860dabaa65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -215,3 +216,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4738893, y: 1.139717}
   m_EdgeRadius: 0
+--- !u!114 &4301624102092026412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640578622734250328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e38f89d3637a4849aa6d48d7c99d274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
+  healthState: 0
+  wallDamage: {fileID: 8007694279709879743}
