@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7344522548008684913}
   - component: {fileID: 5877196995366624420}
   - component: {fileID: 617489373719545109}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: turret build
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,3 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67cb57a1688fee44292ea1906e5feafd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bf: {fileID: 7344522548008684913}
+  isInRange: 0
+  interactKey: 101
+  constructedBuildingPrefab: {fileID: 3364044098720580275, guid: 8cc59724c3312c34ba25716e6f285b09, type: 3}
+  cost: 1
