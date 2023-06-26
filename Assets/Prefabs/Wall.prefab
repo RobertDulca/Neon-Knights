@@ -229,6 +229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 10
+  maxHealth: 2
   healthState: 0
   wallDamage: {fileID: 8007694279709879743}
