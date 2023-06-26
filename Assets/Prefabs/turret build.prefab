@@ -147,4 +147,4 @@ MonoBehaviour:
   isInRange: 0
   interactKey: 101
   constructedBuildingPrefab: {fileID: 3364044098720580275, guid: 8cc59724c3312c34ba25716e6f285b09, type: 3}
-  cost: 1
+  cost: 20

@@ -80,6 +80,7 @@ public class playerHealth : MonoBehaviour
     {
         if (gameOverPanel != null)
         {
+            Time.timeScale = 0f;
             gameOverPanel.SetActive(true);
             survivalTimeText.text = "Survived for: " + survivalTime.ToString("F2") + " seconds";
             coinCountText.text = "Coins collected: " + coinCount;
@@ -89,12 +90,14 @@ public class playerHealth : MonoBehaviour
     public void GoToMainMenu()
     {
         startTime = Time.time;
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu"); 
     }
 
     public void PlayAgain()
     {
         ResetTimer();
+        Time.timeScale = 1f;
         startTime = Time.time;
         SceneManager.LoadScene("Level1");
     }
