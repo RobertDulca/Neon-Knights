@@ -12,6 +12,8 @@ public class Health : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Behaviour[] components;
 
+    public GameObject coinPrefab;
+
     private void Awake()
     {
         currentHealth = startingHealth;
@@ -40,7 +42,7 @@ public class Health : MonoBehaviour
                 { 
                     GetComponent<MeleeEnemy>().enabled= false;
                 }*/
-
+                DropCoin();
                 foreach(Behaviour component in components) 
                 {
                     component.enabled = false;
@@ -54,5 +56,10 @@ public class Health : MonoBehaviour
     private void Deactivate()
     {
         gameObject.SetActive(false);
+    }
+
+    void DropCoin()
+    {
+        GameObject spawnedCoin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
     }
 }

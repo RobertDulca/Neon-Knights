@@ -2330,7 +2330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bc7cf69a4aac542b88d45f15fbfbae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 40
   maxHealth: 2
   timerUI: {fileID: 0}
   gameOverPanel: {fileID: 261636557}

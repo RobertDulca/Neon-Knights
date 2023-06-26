@@ -43,6 +43,6 @@ public class Enemy : MonoBehaviour
     }
     void DropCoin()
     {
-        Instantiate(coinPrefab, transform.position, Quaternion.identity);
+        GameObject spawnedCoin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
     }
 }

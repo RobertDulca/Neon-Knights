@@ -197,7 +197,7 @@ MonoBehaviour:
   health: 5
   attackPower: 5
   moveSpeed: 3
-  coinPrefab: {fileID: 0}
+  coinPrefab: {fileID: 6825700503403442107, guid: df61b77cad1824d198ccd76ce2dc3c9d, type: 3}
 --- !u!114 &50495222848790633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,3 +213,4 @@ MonoBehaviour:
   startingHealth: 3
   components:
   - {fileID: 5705627128737924472}
+  coinPrefab: {fileID: 6825700503403442107, guid: df61b77cad1824d198ccd76ce2dc3c9d, type: 3}

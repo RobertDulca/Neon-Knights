@@ -213,3 +213,4 @@ MonoBehaviour:
   startingHealth: 3
   components:
   - {fileID: -8157558768182621006}
+  coinPrefab: {fileID: 6825700503403442107, guid: df61b77cad1824d198ccd76ce2dc3c9d, type: 3}
