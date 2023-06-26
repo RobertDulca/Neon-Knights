@@ -15,6 +15,7 @@ public class playerHealth : MonoBehaviour
     public GameObject gameOverPanel;
     public Text survivalTimeText;
     public Text coinCountText;
+    private int enemyCount;
 
     string end;
 
@@ -108,8 +109,40 @@ public class playerHealth : MonoBehaviour
 
         if (collision.gameObject.layer == enemyLayer)
         {
-            // Damage the player
-            TakeDamage(2);
+            // Increase the enemy count
+            enemyCount++;
+
+            // Start damaging the player over time if not already active
+            if (enemyCount == 1)
+            {
+                StartCoroutine(DamageOverTime(1f));
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        int enemyLayer = LayerMask.NameToLayer("Enemy"); // Set the layer name of the enemy layer
+
+        if (collision.gameObject.layer == enemyLayer)
+        {
+            // Decrease the enemy count
+            enemyCount--;
+
+            // Stop damaging the player over time if no enemies remain
+            if (enemyCount == 0)
+            {
+                StopCoroutine(DamageOverTime(1f));
+            }
+        }
+    }
+
+    IEnumerator DamageOverTime(float damageInterval)
+    {
+        while (health > 0)
+        {
+            TakeDamage(2*enemyCount);
+            yield return new WaitForSeconds(damageInterval);
         }
     }
 }
