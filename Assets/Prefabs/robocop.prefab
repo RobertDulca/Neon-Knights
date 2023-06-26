@@ -211,3 +211,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
+  components:
+  - {fileID: -8157558768182621006}
