@@ -12,36 +12,38 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> prefabs;
 
     public List<Transform> spawnPoints;
-    //Intervall für Gegner spawn (als Variable damit man sie bei Spielfortschritt erhöhen kann)
-    public float spawnInterval = 2f;
 
+    [SerializeField]
+    private float initialSpawnInterval = 2f;
+
+    [SerializeField]
+    private float spawnIntervalDecrease = 0.1f;
+
+    [SerializeField]
+    private float spawnIntervalMin = 0.5f;
+
+    [SerializeField]
+    private float spawnIntervalChange = 60f;
+
+    private float currentSpawnInterval;
 
     public void StartSpawning()
     {
-        StartCoroutine(SpawnDelay());
-
-        //StopAllCoroutines();
+        currentSpawnInterval = initialSpawnInterval;
+        InvokeRepeating(nameof(SpawnEnemy), 0f, currentSpawnInterval);
+        Invoke(nameof(DecreaseSpawnInterval), spawnIntervalChange); // Decrease spawn interval after one minute
     }
-    
-    IEnumerator SpawnDelay()
-    {
-        //Spawnfunktion Aufrufen
-        SpawnEnemy();
-        //Intervall abwarten
-        yield return new WaitForSeconds(spawnInterval);
-        //Funktion nochmal aufrufen
-        StartCoroutine(SpawnDelay());
-    }
-    
 
-    //Spawnmechanik
     void SpawnEnemy()
     {
-        //erstelle zufälligen Gegner -> prefabs.Count zählt Anzahl an Gegner die man einfügt
         int randomPrefabID = Random.Range(0, prefabs.Count);
-        //entscheide durch Zufall auf welcher Seite der Gegner spawnt
-        int randomSpawnPointID = Random.Range(0, spawnPoints.Count); //0 oder 1
-        //Den Gegner Spawnen
+        int randomSpawnPointID = Random.Range(0, spawnPoints.Count);
         GameObject spawnedEnemy = Instantiate(prefabs[randomPrefabID], spawnPoints[randomSpawnPointID]);
+    }
+
+    void DecreaseSpawnInterval()
+    {
+        currentSpawnInterval -= spawnIntervalDecrease;
+        currentSpawnInterval = Mathf.Max(currentSpawnInterval, spawnIntervalMin);
     }
 }

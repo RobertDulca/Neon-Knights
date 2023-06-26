@@ -3706,7 +3706,10 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 1102615243}
   - {fileID: 1021590436}
-  spawnInterval: 2
+  initialSpawnInterval: 2
+  spawnIntervalDecrease: 0.1
+  spawnIntervalMin: 0.5
+  spawnIntervalChange: 60
 --- !u!114 &1014582070
 MonoBehaviour:
   m_ObjectHideFlags: 0

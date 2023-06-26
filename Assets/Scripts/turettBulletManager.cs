@@ -35,6 +35,7 @@ public class turettBulletManager : MonoBehaviour
         {
             // Apply damage or destroy the enemy
             //Destroy(collision.gameObject);
+            collision.GetComponent<Health>().TakeDamge(2);
             Destroy(this.gameObject);
         }
     }
