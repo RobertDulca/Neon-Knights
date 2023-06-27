@@ -8,9 +8,12 @@ public class Projectile : MonoBehaviour
     private float direction;
     private bool hit;
     private float lifetime;
+    private float maxLifetime = 0.5f; //LifetimeHier
 
     private Animator anim;
     private BoxCollider2D boxCollider;
+
+    private int bulletDamage = 1; //DAMAGE HIER
 
     private void Awake()
     {
@@ -26,7 +29,7 @@ public class Projectile : MonoBehaviour
         transform.Translate(movementSpeed, 0, 0);
 
         lifetime += Time.deltaTime;
-        if (lifetime > 1 && !hit)
+        if (lifetime > maxLifetime && !hit)
         {
             hit = true; // Prevent this block from running repeatedly
             boxCollider.enabled = false;
@@ -42,7 +45,7 @@ public class Projectile : MonoBehaviour
         anim.SetTrigger("explode");
 
         if (collision.tag == "Enemy")
-            collision.GetComponent<Health>().TakeDamge(1); // Corrected a typo here: TakeDamge to TakeDamage
+            collision.GetComponent<Health>().TakeDamge(bulletDamage); 
     }
 
     public void SetDirection(float _direction)

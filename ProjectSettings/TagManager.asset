@@ -15,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Coin
   - destroyed buiding
   - Ground
   - Background
@@ -25,7 +25,7 @@ TagManager:
   - BuildField
   - Turret
   - Playerbullet
-  - 
+  - Explosion
   - 
   - 
   - 
@@ -57,21 +57,30 @@ TagManager:
   - name: Wall destroyed
     uniqueID: 3015598427
     locked: 0
-  - name: Player
-    uniqueID: 3858713491
-    locked: 0
   - name: Wall
     uniqueID: 1831277675
     locked: 0
   - name: Wall patch
     uniqueID: 2517016765
     locked: 0
-  - name: Enemy
-    uniqueID: 1866705133
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Coin
+    uniqueID: 2698696537
+    locked: 0
+  - name: Enemy
+    uniqueID: 1866705133
+    locked: 0
+  - name: Player
+    uniqueID: 3858713491
+    locked: 0
+  - name: Explosion
+    uniqueID: 4075661849
+    locked: 0
   - name: Playerbullet
     uniqueID: 2820546423
+    locked: 0
+  - name: 
+    uniqueID: 496835647
     locked: 0

@@ -12,7 +12,7 @@ public class turettBuildingSite : MonoBehaviour
     private ScoreScript scoreScript;
     private GameObject newWall;
 
-    [SerializeField] public int cost = 10;
+    private int cost = 5; //KOSTEN HIER
 
     private void Start()
     {

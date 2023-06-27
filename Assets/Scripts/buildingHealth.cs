@@ -5,7 +5,7 @@ using UnityEngine;
 public class buildingHealth : MonoBehaviour
 {
     public int health;
-    public int maxHealth = 10;
+    public int maxHealth = 40; //HEALTH HIER
     public bool healthState;
     public SpriteRenderer wallDamage;
     private BuildField buildField;
@@ -55,7 +55,7 @@ public class buildingHealth : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        int enemyLayer = LayerMask.NameToLayer("Enemy"); // Set the layer name of the enemy layer
+        int enemyLayer = LayerMask.NameToLayer("Explosion"); // Set the layer name of the enemy layer
 
         if (collision.gameObject.layer == enemyLayer)
         {

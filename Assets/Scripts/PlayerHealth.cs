@@ -122,7 +122,7 @@ public class playerHealth : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        int enemyLayer = LayerMask.NameToLayer("Enemy"); // Set the layer name of the enemy layer
+        int enemyLayer = LayerMask.NameToLayer("Explosion"); // Set the layer name of the enemy layer
 
         if (collision.gameObject.layer == enemyLayer)
         {

@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3123733739627797913}
   - component: {fileID: 5705627128737924472}
+  - component: {fileID: 50495222848790633}
   - component: {fileID: 5936089628202797572}
   - component: {fileID: 3910841103222427954}
   - component: {fileID: 2671482748235337790}
   - component: {fileID: 285513114315651672}
-  - component: {fileID: 50495222848790633}
   m_Layer: 12
   m_Name: cyber-tiger1
   m_TagString: Enemy
@@ -51,7 +51,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   attackPower: 5
-  moveSpeed: 3
+  moveSpeed: 4
+  coinPrefab: {fileID: 6825700503403442107, guid: df61b77cad1824d198ccd76ce2dc3c9d, type: 3}
+--- !u!114 &50495222848790633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7055280282518764737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565f7d02ca0f396488f189ae6f18d7ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 5
+  components:
+  - {fileID: 5705627128737924472}
   coinPrefab: {fileID: 6825700503403442107, guid: df61b77cad1824d198ccd76ce2dc3c9d, type: 3}
 --- !u!212 &5936089628202797572
 SpriteRenderer:
@@ -198,19 +214,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.948, y: 1.272604}
   m_EdgeRadius: 0
---- !u!114 &50495222848790633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7055280282518764737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 565f7d02ca0f396488f189ae6f18d7ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 3
-  components:
-  - {fileID: 5705627128737924472}
-  coinPrefab: {fileID: 6825700503403442107, guid: df61b77cad1824d198ccd76ce2dc3c9d, type: 3}

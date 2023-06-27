@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float startingHealth;
     private float currentHealth;
     private Animator anim;
-    private bool dead;
+    public bool dead=false;
 
     [Header("Components")]
     [SerializeField] private Behaviour[] components;
@@ -25,14 +25,15 @@ public class Health : MonoBehaviour
         
         if( currentHealth > 0)
         {
-            anim.SetTrigger("hurt");
+            //anim.SetTrigger("hurt");
         }
         else 
         {
             if (!dead) 
             {
+                gameObject.layer = 16;
                 anim.SetTrigger("die");
-
+                
                 /*if(GetComponent<playerMovement>() != null) 
                 { 
                     GetComponent<playerMovement>().enabled= false;

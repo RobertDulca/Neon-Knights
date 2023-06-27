@@ -8,6 +8,8 @@ public class turettBulletManager : MonoBehaviour
 
     private Transform target;
 
+   private int turretDamage = 1; //DAMGE HIER
+
     public void SetTarget(Transform enemy)
     {
         target = enemy;
@@ -35,7 +37,7 @@ public class turettBulletManager : MonoBehaviour
         {
             // Apply damage or destroy the enemy
             //Destroy(collision.gameObject);
-            collision.GetComponent<Health>().TakeDamge(2);
+            collision.GetComponent<Health>().TakeDamge(turretDamage);
             Destroy(this.gameObject);
         }
     }
